@@ -3,6 +3,6 @@ from django.shortcuts import redirect
 from . import views
 
 urlpatterns = [
-    path('', lambda req: redirect('index')),
-    path('dashboard/', views.index, name='index'),
+    path('', views.index, name='index'),
+    path('dashboard/', views.dashboard, name='dashboard'),
 ]
