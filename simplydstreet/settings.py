@@ -33,8 +33,11 @@ ALLOWED_HOSTS = ['*', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'blog.apps.BlogConfig',
     'fontawesomefree',
+    "rest_framework",
+    "rest_framework.authtoken",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,6 +76,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'simplydstreet.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

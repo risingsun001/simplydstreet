@@ -4,6 +4,8 @@ bin/
 __pycache__/
 
 *.env
+*.csv
+*.ipynb
 
 venv/
 
