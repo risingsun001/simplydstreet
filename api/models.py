@@ -8,9 +8,12 @@ class Exchange(models.Model):
     timezone = models.CharField('TimeZone', max_length=35)
 
 class Stock(models.Model):
-    symbol = models.CharField('Symbol', primary_key=True, max_length=20)
+    symbol = models.CharField('Symbol', blank=True, max_length=20)
     mic_code = models.ForeignKey(Exchange, related_name='stocks', on_delete=models.CASCADE)
-    name = models.CharField('Name of Stock', max_length=200)
+    name = models.CharField('Name of Stock', blank=True, max_length=200)
     currency = models.CharField('Market Currency', max_length=3)
     stock_type = models.CharField('Stock Type', max_length=30)
+
+    class Meta:
+        unique_together = ("symbol", "mic_code")
 
