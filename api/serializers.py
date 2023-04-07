@@ -12,7 +12,7 @@ class ExchangeSerializer(serializers.ModelSerializer):
         model = Exchange
         fields = "__all__"
 
-class StockSerializer(serializers.ModelSerializer):
+class SecuritySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Stock
+        model = Security
         fields = "__all__"

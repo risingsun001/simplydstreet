@@ -10,7 +10,7 @@ router = routers.DefaultRouter()
  
 # define the router path and viewset to be used
 router.register('exchanges', ExchangeViewSet)
-router.register('stocks', StockViewSet)
+router.register('securities', SecurityViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),

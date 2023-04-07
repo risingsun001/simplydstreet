@@ -7,6 +7,10 @@ from .models import *
 class ExchangeAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Stock)
-class StockAdmin(admin.ModelAdmin):
+@admin.register(Security)
+class SecurityAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(SecurityMeta)
+class SecurityMetaAdmin(admin.ModelAdmin):
     pass

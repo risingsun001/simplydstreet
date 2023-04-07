@@ -16,18 +16,18 @@ class ExchangeViewSet(ModelViewSet):
     pagination_class = None
     permission_classes = [IsAdminOrReadOnly]
 
-class StockViewSet(ModelViewSet):
-    queryset = Stock.objects.all()
-    serializer_class = StockSerializer
+class SecurityViewSet(ModelViewSet):
+    queryset = Security.objects.all()
+    serializer_class = SecuritySerializer
     permission_classes = [IsAdminOrReadOnly]
 
     def get_queryset(self):
         mic = self.request.GET.get('mic', '')
-        queryset = self.queryset if mic=='' else self.queryset.filter(mic_code=mic)
+        queryset = self.queryset if mic=='' else self.queryset.filter(mic=mic)
         
         search_word = self.request.GET.get('search', '').lower()
         if search_word:
-            queryset = queryset.annotate(text=Concat('symbol', Value(' '), 'name', Value(' '), 'mic_code', output_field=TextField()))
+            queryset = queryset.annotate(text=Concat('symbol', Value(' '), 'name', output_field=TextField()))
             queryset = queryset.filter(text__icontains=search_word)
         
         return queryset
